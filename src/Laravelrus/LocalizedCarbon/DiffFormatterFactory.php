@@ -3,7 +3,7 @@
 use Laravelrus\LocalizedCarbon\DiffFormatters\DiffFormatterInterface;
 
 class DiffFormatterFactory {
-    protected $formatters = [];
+    protected $formatters = array();
 
     public function extend($language, $formatter) {
         $language = strtolower($language);
