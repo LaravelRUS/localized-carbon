@@ -2,6 +2,7 @@
     "name": "laravelrus/localized-carbon",
     "description": "A localizable version of Carbon",
     "keywords": ["laravel", "carbon", "datetime", "date", "time"],
+    "license": "MIT",
     "authors": [
         {
             "name": "Aleksandr Egorov",
