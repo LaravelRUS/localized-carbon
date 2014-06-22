@@ -1,5 +1,7 @@
 # Localized Carbon
 
+See also [localized documentation](docs)
+
 + [Introduction](#intro)
 + [Usage](#usage)
 + [Supported languages](#languages)
