@@ -5,6 +5,7 @@ See also [localized documentation](docs)
 + [Introduction](#intro)
 + [Usage](#usage)
 + [Supported languages](#languages)
++ [Installation](#installation)
 + [Extending](#extending)
 + [Contributing](#contributing)
 
@@ -38,9 +39,10 @@ Current version of Localized Carbon ships with two localizations:
 
 But it is extendable, so you may write and use your own localization without altering the contents of the package. See [extending Localized Carbon](#extending).
 
+<a name="installation"></a>
 ## Installation
 
-Add the following requirement to your `composer.json`: `"laravelrus/localized-carbon": "dev-master"`.
+Add the following requirement to your `composer.json`: `"laravelrus/localized-carbon": "1.*"`.
 
 Next, add package's Service Provider to `app/config/app.php` in `providers` section:
 
