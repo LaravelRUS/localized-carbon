@@ -17,13 +17,21 @@ Localized Carbon is an extension of a popular Carbon package, designed specially
 <a name="usage"></a>
 ## Usage
 
-Imagine you have a `Comment` model which has default timestamp fields. You want to display, how much time has gone since its `create_at` in a human-readable format. You can achieve it this way in your Blade template:
+This package provides a `LocalizedCarbon` class which inherits original Carbon, so its usage is absolutely the same as original Carbon's.
+
+But imagine you have a `Comment` model for example, which has default timestamp fields (`created_at` and `updated_at`). You want to display, how much time has gone since its `created_at` in a human-readable format. One way to achieve may be such (in your Blade template):
 
 ```
 {{ LocalizedCarbon::instance($comment->created_at)->diffForHumans() }}
 ```
 
 In this case the class will output something like "5 minutes ago". Note that for just an English version of the string original Carbon would be enough. This `LocalizedCarbon` is used to display the message in the current application language. For example, for Russian language it will display "5 минут назад".
+
+But also, you may substitute Laravel's Eloquent model, so the timestamps would be converted to `LocalizedCarbon` instead of original `Carbon`. So the usage could be as if your were using original Carbon:
+
+```
+{{ $comment->created_at->diffForHumans() }}
+```
 
 As in original Carbon, `diffForHumans` functions has an optional first argument (which is another Carbon instance). It specified the time to which difference should be calculated. By default (a missing or `null` value) current time is used.
 
@@ -48,17 +56,23 @@ Add the following requirement to your `composer.json`: `"laravelrus/localized-ca
 Next, add package's Service Provider to `app/config/app.php` in `providers` section:
 
 ```
-    'Laravelrus\LocalizedCarbon\LocalizedCarbonServiceProvider',
+'Laravelrus\LocalizedCarbon\LocalizedCarbonServiceProvider',
 ```
 
 After that you may want to add some Aliases (`aliases` section of the same config):
 
 ```
-        'LocalizedCarbon'   => 'Laravelrus\LocalizedCarbon\LocalizedCarbon',
-        'DiffFormatter'     => 'Laravelrus\LocalizedCarbon\DiffFactoryFacade',
+'LocalizedCarbon'   => 'Laravelrus\LocalizedCarbon\LocalizedCarbon',
+'DiffFormatter'     => 'Laravelrus\LocalizedCarbon\DiffFactoryFacade',
 ```
 
 Note that `DiffFormatter` will only be used for extending default localizations. See [extending Localized Carbon](#extending).
+
+If you want to use the power of `LocalizedCarbon` the same way as you did with original `Carbon` in your models, you may want to substitute Laravel's Eloquent model by changing the alias for `Eloquent` (assuming that your models extend this class):
+
+```
+'Eloquent'        => 'Laravelrus\LocalizedCarbon\Models\Eloquent',
+```
 
 <a name="extending"></a>
 ## Extending Localized Carbon
