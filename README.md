@@ -27,15 +27,16 @@ In this case the class will output something like "5 minutes ago". Note that for
 
 As in original Carbon, `diffForHumans` functions has an optional first argument (which is another Carbon instance). It specified the time to which difference should be calculated. By default (a missing or `null` value) current time is used.
 
-Also `LocalizedCarbon` adds an optional second argument, in which you may specify the desired language, or directly a `formatter` class which is used to format the difference-string (see [extending Localized Carbon](#extending)). By default current application language is used.
+Also `LocalizedCarbon` adds an optional second argument, in which you may specify the desired language, or directly a `formatter` class which is used to format the difference-string (see [extending Localized Carbon](#extending)). By default current application language is used. Also you may specify a Closure in the second parameter which will do formatting. For its signature refer to [extending Localized Carbon](#extending) section.
 
 <a name="languages"></a>
 ## Supported languages
 
 Current version of Localized Carbon ships with two localizations:
 
-+ English
-+ Russian
++ English (en)
++ Russian (ru)
++ Ukranian (uk)
 
 But it is extendable, so you may write and use your own localization without altering the contents of the package. See [extending Localized Carbon](#extending).
 
@@ -64,7 +65,9 @@ Note that `DiffFormatter` will only be used for extending default localizations.
 
 If needed localization is not shipped with this package, you may write your own and extend Localized Carbon with it, not even touching the vendor folder itself.
 
-For this you should first write your `DiffFormatter` class, implementing `Laravelrus\LocalizedCarbon\DiffFormatters\DiffFormatterInterface`. This interface forces the class to have a single `format` method which looks like this:
+There are a couple of ways to extend Localized Carbon.
+
+First, you may write your own `DiffFormatter` class for this, implementing `Laravelrus\LocalizedCarbon\DiffFormatters\DiffFormatterInterface`. This interface forces the class to have a single `format` method which looks like this:
 
 ```
 public function format($isNow, $isFuture, $delta, $unit);
@@ -77,7 +80,7 @@ public function format($isNow, $isFuture, $delta, $unit);
 
 So, your `format` method should return a string based on this arguments. As an example see an existing DiffFormatters in `vendor\laravelrus\localized-carbon\src\Laravelrus\LocalizedCarbon\DiffFormatters` directory. You can also reference a lang-files, using `Lang::choice` as it is done in Russian localization for example.
 
-When your class is ready, you must register it within the Localized Carbon. For this you must call `DiffFormatter::extend` method from within ane file which is loaded by the framework. For example, you can do it somewhere in `app/start/global.php`.
+When your class is ready, you must register it within the Localized Carbon. For this you must call `DiffFormatter::extend` method from within any file which is loaded by the framework. For example, you can do it somewhere in `app/start/global.php`.
 
 The `extend` method expects two parameters: first is the language you want to be supported (most often it would be `App::getLocale()` if you want just to use application's language). Next is the instance of your formatter, OR just a name of the class if it can be autoloaded. Consider these examples:
 
@@ -92,10 +95,24 @@ DiffFormatter::extend('fr', 'Acme\\DiffFormatters\\FrDiffFormatter');
 
 In the latter case the formatter will be autoloaded when it is needed using IoC. Also note that formatter is loaded only once during application life-cycle due to optimization considerations.
 
+The second way to extend is to pass a Closure as the second parameter. It must have the same signature as the `format` method of `DiffFormatterInterface` interface. For example:
+
+```
+DiffFormatter::extend('fr', function($isNow, $isFuture, $delta, $unit) {
+    return 'Some formatter diff string!';
+});
+```
+
+Also, there is a possibility to add an alias for an existing language. For example, Localized Carbon is shipped with Ukranian localization, which is recognized by `uk` language key. But what if your application uses `ua` or `ukr` language, which still means it is Ukranian? In this case you may add an alias for `uk` language in this way:
+
+```
+DiffFormatter::alias('ukr', 'ua');
+```
+
 <a name="contributing"></a>
 ## Contributing
 
-If you've written a formatter for the language which is not supported by current version of Localized Carbon out of the box - feel free to make a pull request with it, but be sure to adjust your formatter for been used by the package.
+If you've written a formatter for the language which is not supported by current version of Localized Carbon out of the box - feel free to make a pull request with it in the current version branch (1.2), but be sure to adjust your formatter for been used by the package.
 
 The formatter should lie in `src/Laravelrus/LocalizedCarbon/DiffFormatters` directory, following a simple naming convention: the class name should start with the desired language in lower-case, but the first letter in upper-case. The rest part of the name should be "DiffFormatter". The file name should correspond to the class name.
 

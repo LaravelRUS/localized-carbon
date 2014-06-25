@@ -4,14 +4,24 @@ use Laravelrus\LocalizedCarbon\DiffFormatters\DiffFormatterInterface;
 
 class DiffFormatterFactory {
     protected $formatters = array();
+    protected $aliases = array();
 
     public function extend($language, $formatter) {
         $language = strtolower($language);
         $this->formatters[$language] = $formatter;
     }
 
+    public function alias($alias, $language) {
+        $language = strtolower($language);
+        $this->aliases[$alias] = $language;
+    }
+
     public function get($language) {
         $language = strtolower($language);
+
+        if (isset($this->aliases[$language])) {
+            $language = $this->aliases[$language];
+        }
 
         if (isset($this->formatters[$language])) {
             $formatter = $this->formatters[$language];
@@ -32,8 +42,8 @@ class DiffFormatterFactory {
             }
         }
 
-        if (! $formatter instanceof DiffFormatterInterface) {
-            throw new \Exception('Formatter for language ' . $language . ' should implement DiffFormatterInterface.');
+        if (!$formatter instanceof \Closure && !$formatter instanceof DiffFormatterInterface) {
+            throw new \Exception('Formatter for language ' . $language . ' should implement DiffFormatterInterface or must be a Closure.');
         }
 
         // Remember instance for further use
