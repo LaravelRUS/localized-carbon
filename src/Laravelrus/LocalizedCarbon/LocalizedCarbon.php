@@ -56,6 +56,13 @@ class LocalizedCarbon extends Carbon {
         }
 
         // Format and return
-        return $formatter->format($isNow, $isFuture, $delta, $unit);
+        $result = null;
+        if ($formatter instanceof DiffFormatterInterface) {
+            $result = $formatter->format($isNow, $isFuture, $delta, $unit);
+        } elseif ($formatter instanceof \Closure) {
+            $result = $formatter($isNow, $isFuture, $delta, $unit);
+        }
+
+        return $result;
     }
 }
