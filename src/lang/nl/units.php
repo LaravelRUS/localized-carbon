@@ -6,6 +6,6 @@ return array(
     "hour"      => "uur|uren|uren",
     "day"       => "dag|dagen|dagen",
     "week"      => "week|weken|weken",
-    "month"     => "maand|maaden|maaden",
+    "month"     => "maand|maanden|maanden",
     "year"      => "jaar|jaren|jaren",
 );
