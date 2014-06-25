@@ -112,7 +112,7 @@ DiffFormatter::alias('ukr', 'ua');
 <a name="contributing"></a>
 ## Contributing
 
-If you've written a formatter for the language which is not supported by current version of Localized Carbon out of the box - feel free to make a pull request with it in the current version branch (1.1), but be sure to adjust your formatter for been used by the package.
+If you've written a formatter for the language which is not supported by current version of Localized Carbon out of the box - feel free to make a pull request with it in the current version branch (1.2), but be sure to adjust your formatter for been used by the package.
 
 The formatter should lie in `src/Laravelrus/LocalizedCarbon/DiffFormatters` directory, following a simple naming convention: the class name should start with the desired language in lower-case, but the first letter in upper-case. The rest part of the name should be "DiffFormatter". The file name should correspond to the class name.
 
