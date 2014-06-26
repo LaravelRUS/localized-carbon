@@ -4,8 +4,7 @@
 class NlDiffFormatter implements DiffFormatterInterface {
 
     public function format($isNow, $isFuture, $delta, $unit) {
-        $txt = $delta . ' ' . $unit;
-        $txt .= $delta == 1 ? '' : 's';
+        $txt = $delta . ' ' . \Lang::choice("localized-carbon::units." . $unit, $delta, array(), 'nl');
 
         if ($isNow) {
             $txt .= ($isFuture) ? ' in de toekomst' : ' geleden';
