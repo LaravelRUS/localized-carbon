@@ -40,7 +40,7 @@ Also `LocalizedCarbon` adds an optional second argument, in which you may specif
 <a name="languages"></a>
 ## Supported languages
 
-Current version of Localized Carbon ships with two localizations:
+Current version of Localized Carbon ships with these localizations:
 
 + English (en)
 + Russian (ru)
