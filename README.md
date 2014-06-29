@@ -52,7 +52,7 @@ But it is extendable, so you may write and use your own localization without alt
 <a name="installation"></a>
 ## Installation
 
-Add the following requirement to your `composer.json`: `"laravelrus/localized-carbon": "1.*"`.
+Add the following requirement to your `composer.json`: `"laravelrus/localized-carbon": "1.*"` and then run `composer update`.
 
 Next, add package's Service Provider to `app/config/app.php` in `providers` section:
 
