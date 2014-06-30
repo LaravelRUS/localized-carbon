@@ -51,7 +51,7 @@
 <a name="installation"><a/>
 ## Установка
 
-Добавте следующее определение в секуцию `require` файла `composer.json` вашего проекта: `"laravelrus/localized-carbon": "1.*"`, после чего выполните команду `composer update`.
+Добавьте следующее определение в секцию `require` файла `composer.json` вашего проекта: `"laravelrus/localized-carbon": "1.*"`, после чего выполните команду `composer update`.
 
 Далее нужно добавить сервис провайдер (Service Provider), поставляемый с пакетом, в раздел `providers` файла `app/config/app.php`:
 
