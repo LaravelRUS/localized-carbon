@@ -46,6 +46,7 @@ Current version of Localized Carbon ships with these localizations:
 + Russian (ru)
 + Ukrainian (uk)
 + Dutch (nl)
++ Spanish (es)
 
 But it is extendable, so you may write and use your own localization without altering the contents of the package. See [extending Localized Carbon](#extending).
 
