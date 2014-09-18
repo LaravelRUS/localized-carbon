@@ -124,7 +124,7 @@ DiffFormatter::extend('fr', function($isNow, $isFuture, $delta, $unit) {
 Also, there is a possibility to add an alias for an existing language. For example, Localized Carbon is shipped with Ukranian localization, which is recognized by `uk` language key. But what if your application uses `ua` or `ukr` language, which still means it is Ukranian? In this case you may add an alias for `uk` language in this way:
 
 ```
-DiffFormatter::alias('ukr', 'ua');
+DiffFormatter::alias('ukr', 'uk');
 ```
 
 <a name="contributing"></a>
