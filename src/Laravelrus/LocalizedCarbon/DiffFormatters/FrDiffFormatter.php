@@ -9,8 +9,6 @@ class FrDiffFormatter implements DiffFormatterInterface {
 
         $txt = $delta . ' ' . $unitStr;
 
-        var_dump($isNow, $isFuture);
-
         if ($isNow) {
             $when = ($isFuture) ?  'Dans ' : 'Il y a ';
             return $when . $txt;
