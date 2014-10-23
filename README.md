@@ -49,6 +49,7 @@ Current version of Localized Carbon ships with these localizations:
 + Spanish (es)
 + Portuguese (pt)
 + French (fr)
++ Bulgarian (bg)
 
 But it is extendable, so you may write and use your own localization without altering the contents of the package. See [extending Localized Carbon](#extending).
 
