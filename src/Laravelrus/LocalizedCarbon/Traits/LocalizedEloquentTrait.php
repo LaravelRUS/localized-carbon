@@ -1,10 +1,8 @@
-<?php namespace Laravelrus\LocalizedCarbon\Models;
+<?php namespace Laravelrus\LocalizedCarbon\Traits;
 
-
-use Illuminate\Database\Eloquent\Model;
 use Laravelrus\LocalizedCarbon\LocalizedCarbon;
 
-class Eloquent extends Model {
+trait LocalizedEloquentTrait {
     /**
      * Return a timestamp as DateTime object.
      *

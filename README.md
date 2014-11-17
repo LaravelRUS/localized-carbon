@@ -73,11 +73,13 @@ After that you may want to add some Aliases (`aliases` section of the same confi
 
 Note that `DiffFormatter` will only be used for extending default localizations. See [extending Localized Carbon](#extending).
 
-If you want to use the power of `LocalizedCarbon` the same way as you did with original `Carbon` in your models, you may want to substitute Laravel's Eloquent model by changing the alias for `Eloquent` (assuming that your models extend this class):
+If you want to use the power of `LocalizedCarbon` the same way as you did with original `Carbon` in your models, you may want to use supplied trait for this in your models:
 
 ```
-'Eloquent'        => 'Laravelrus\LocalizedCarbon\Models\Eloquent',
+use \Laravelrus\LocalizedCarbon\Traits\LocalizedEloquentTrait;
 ```
+
+In this case `LocalizedCarbon` will be used for all dates in your Eloquent model instead of original `Carbon`.
 
 <a name="extending"></a>
 ## Extending Localized Carbon

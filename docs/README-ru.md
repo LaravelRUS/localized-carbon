@@ -70,11 +70,13 @@
 
 Стоит отметить, что класс `DiffFormatter` будет использоваться только для расширения пакета дополнительными локализациями. См. [расширение пакета](#extending).
 
-Если вы хотите использовать `LocalizedCarbon` привычным способом, то можете подменить класс Eloquent-модели путем изменения соответствующего алиаса `Eloquent` в конфиге:
+Если вы хотите использовать `LocalizedCarbon` привычным способом в ваших моделях, то можете воспользоваться поставляемым трейтом:
 
 ```
-'Eloquent'        => 'Laravelrus\LocalizedCarbon\Models\Eloquent',
+use \Laravelrus\LocalizedCarbon\Traits\LocalizedEloquentTrait;
 ```
+
+В этом случае для всех дат в вашей ELoquent-модели будет использоваться `LocalizedCarbon` вместо исходного `Carbon`.
 
 <a name="extending"></a>
 ## Расширение пакета
