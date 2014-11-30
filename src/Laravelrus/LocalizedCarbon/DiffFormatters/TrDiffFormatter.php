@@ -1,6 +1,6 @@
 <?php namespace Laravelrus\LocalizedCarbon\DiffFormatters;
 
-class TrbDiffFormatter implements DiffFormatterInterface
+class TrDiffFormatter implements DiffFormatterInterface
 {
 	public function format($isNow, $isFuture, $delta, $unit)
 	{
