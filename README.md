@@ -83,6 +83,10 @@ use \Laravelrus\LocalizedCarbon\Traits\LocalizedEloquentTrait;
 
 In this case `LocalizedCarbon` will be used for all dates in your Eloquent model instead of original `Carbon`.
 
+Note that this method is actual for PHP versions 5.4 and higher.
+
+If you are still using PHP 5.3.7 you can substitute Laravel's Eloquent class by `Laravelrus\LocalizedCarbon\Models\Eloquent` supplied with this package. To do this you can either inherit this class directly, or make an alias to it instead of originial Eloquent in `app\config\app.php`.
+
 <a name="extending"></a>
 ## Extending Localized Carbon
 
