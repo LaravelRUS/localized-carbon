@@ -12,7 +12,7 @@ See also [localized documentation](docs)
 <a name="intro"></a>
 ## Introduction
 
-Localized Carbon is an extension of a popular Carbon package, designed specially for Laravel framework. By localization I mean its `diffForHumans` function, which returns a human-readable string of time interval.
+Localized Carbon is an extension of a popular Carbon package, designed specially for Laravel framework. By localization I mean its `diffForHumans` function, which returns a human-readable string of time interval. This package also supports genitive months by introducing the "%f" key in `formatLocalized` method.
 
 <a name="usage"></a>
 ## Usage
@@ -42,16 +42,16 @@ Also `LocalizedCarbon` adds an optional second argument, in which you may specif
 
 Current version of Localized Carbon ships with these localizations:
 
-+ English (en)
-+ Russian (ru)
-+ Ukrainian (uk)
-+ Dutch (nl)
-+ Spanish (es)
-+ Portuguese (pt)
-+ French (fr)
-+ Bulgarian (bg)
-+ Slovakian (sk)
-+ Turkish (tr)
++ English (en) (full)
++ Russian (ru) (full)
++ Ukrainian (uk) (full)
++ Dutch (nl) (no genitive)
++ Spanish (es) (no genitive)
++ Portuguese (pt) (no genitive)
++ French (fr) (no genitive)
++ Bulgarian (bg) (no genitive)
++ Slovakian (sk) (no genitive)
++ Turkish (tr) (no genitive)
 
 But it is extendable, so you may write and use your own localization without altering the contents of the package. See [extending Localized Carbon](#extending).
 
@@ -144,3 +144,5 @@ If you've written a formatter for the language which is not supported by current
 The formatter should lie in `src/Laravelrus/LocalizedCarbon/DiffFormatters` directory, following a simple naming convention: the class name should start with the desired language in lower-case, but the first letter in upper-case. The rest part of the name should be "DiffFormatter". The file name should correspond to the class name.
 
 For example, the formatter for `fr` language would lie in `src/Laravelrus/LocalizedCarbon/DiffFormatters/FrDiffFormatter.php`, and the class name would be `FrDiffFormatter`.
+
+Also I need the help of the community to complete the list of genitives for all supported languages. If you know a language and it uses genitives in dates, feel free to contribute. See an example of Russian or Ukranian `lang\XX\months.php` files.
