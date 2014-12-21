@@ -81,6 +81,10 @@ use \Laravelrus\LocalizedCarbon\Traits\LocalizedEloquentTrait;
 
 В этом случае для всех дат в вашей ELoquent-модели будет использоваться `LocalizedCarbon` вместо исходного `Carbon`.
 
+Но этот способ годится только если Вы используете PHP версии 5.4 или выше.
+
+Если же Вы по-прежнему используете PHP версии 5.3.7, вы можете подменить имеющийся в Laravel класс Eloquent поставляемым классом `Laravelrus\LocalizedCarbon\Models\Eloquent`. Для этого вы можете как наследовать свои модели как напрямую от этого класса, так и заменить алиас к Eloquent на него в файле 'app\config\app.php'.
+
 <a name="extending"></a>
 ## Расширение пакета
 
