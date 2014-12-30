@@ -67,13 +67,15 @@ class LocalizedCarbon extends Carbon {
     }
 
     public function formatLocalized($format = self::COOKIE) {
-        $result = parent::formatLocalized($format);
-
-        if (strpos($result, '%f') !== false) {
+        if (strpos($format, '%f') !== false) {
             $langKey = strtolower(parent::format("F"));
             $replace = \Lang::get("localized-carbon::months." . $langKey);
-            $result = str_replace('%f', $replace, $result);
+            $result = str_replace('%f', $replace, $format);
+        } else {
+            $result = $format;
         }
+
+        $result = parent::formatLocalized($result);
 
         return $result;
     }
