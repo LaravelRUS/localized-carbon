@@ -30,13 +30,14 @@ class LocalizedCarbon extends Carbon {
 
         $delta = $other->diffInSeconds($this);
 
-        // 4 weeks per month, 365 days per year... good enough!!
+        // 4.35 weeks per year. 365 days in a year, 12 months, 7 days in a week:
+        // 365/12/7 = 4.345238095238095 4.35 is good enough for big time calculations!
         $divs = array(
             'second' => self::SECONDS_PER_MINUTE,
             'minute' => self::MINUTES_PER_HOUR,
             'hour'   => self::HOURS_PER_DAY,
             'day'    => self::DAYS_PER_WEEK,
-            'week'   => 4,
+            'week'   => 4.35,
             'month'  => self::MONTHS_PER_YEAR
         );
 
