@@ -9,7 +9,7 @@ class TrDiffFormatter implements DiffFormatterInterface
 		$txt = $delta . ' ' . $unitStr;
 
 		if ($isNow) {
-			$txt = (($isFuture) ? 'sonra ' : 'önce ') . $txt;
+			$txt .= " " . (($isFuture) ? 'sonra ' : 'önce ');
 			
 			return $txt;
 		}
