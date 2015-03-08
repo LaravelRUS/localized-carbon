@@ -12,16 +12,6 @@ class LocalizedCarbonServiceProvider extends ServiceProvider {
 	protected $defer = false;
 
 	/**
-	 * Bootstrap the application events.
-	 *
-	 * @return void
-	 */
-	public function boot()
-	{
-		$this->package('laravelrus/localized-carbon');
-	}
-
-	/**
 	 * Register the service provider.
 	 *
 	 * @return void
@@ -29,8 +19,22 @@ class LocalizedCarbonServiceProvider extends ServiceProvider {
 	public function register()
 	{
 		$this->app->singleton('difffactory', function() {
-            return new DiffFormatterFactory();
-        });
+			return new DiffFormatterFactory();
+		});
+	}
+
+	/**
+	 * Bootstrap the application events.
+	 *
+	 * @return void
+	 */
+	public function boot()
+	{
+		$this->loadTranslationsFrom(__DIR__.'/../../lang', 'localized-carbon');
+
+		$this->publishes([
+			__DIR__.'/../../lang' => base_path('resources/lang'),
+		]);
 	}
 
 	/**
