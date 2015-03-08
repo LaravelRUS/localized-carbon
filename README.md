@@ -1,7 +1,7 @@
 # Localized Carbon
 
-for L4 use 1.4 branch
-for L5 use dev-master
+for **L4** use **1.4** branch   
+for **L5** use **dev-master**
 
 See also [localized documentation](docs)
 
