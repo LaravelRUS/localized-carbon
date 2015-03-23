@@ -56,6 +56,7 @@ Current version of Localized Carbon ships with these localizations:
 + Slovakian (sk) (no genitive)
 + Turkish (tr) (no genitive)
 + Arabic (ar) (no genitive)
++ Japanese (ja) (full)
 
 But it is extendable, so you may write and use your own localization without altering the contents of the package. See [extending Localized Carbon](#extending).
 
