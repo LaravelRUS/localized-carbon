@@ -49,7 +49,7 @@ Current version of Localized Carbon ships with these localizations:
 + Russian (ru) (full)
 + Ukrainian (uk) (full)
 + Dutch (nl) (no genitive)
-+ Spanish (es) (no genitive)
++ Spanish (es) (full)
 + Portuguese (pt) (no genitive)
 + French (fr) (no genitive)
 + Bulgarian (bg) (no genitive)
