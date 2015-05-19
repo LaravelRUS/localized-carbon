@@ -2,7 +2,7 @@
 
 class ElDiffFormatter implements DiffFormatterInterface {
     public function format($isNow, $isFuture, $delta, $unit) {
-        $unitStr = \Lang::choice("localized-carbon::units." . $unit, $delta, array(), 'es');
+        $unitStr = \Lang::choice("localized-carbon::units." . $unit, $delta, array(), 'el');
         $txt = $delta . ' ' . $unitStr;
         if ($isNow) {
             $when = ($isFuture) ?  'από τώρα' : 'πρίν';
