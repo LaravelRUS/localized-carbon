@@ -2,17 +2,18 @@
 class ItDiffFormatter implements DiffFormatterInterface {
     public function format($isNow, $isFuture, $delta, $unit) {
         $unitStr = \Lang::choice("localized-carbon::units." . $unit, $delta, array(), 'it');
-        if($delta == 1)
-        switch($unit){
-            case 'hour': 
-                $delta = 'Un\'';
-                break;
-            case 'week':
-                $delta = 'Una';
-                break;
-            default:
-                $delta = 'Un';
-                break;
+        if($delta == 1){
+            switch($unit){
+                case 'hour': 
+                    $delta = 'Un\'';
+                    break;
+                case 'week':
+                    $delta = 'Una';
+                    break;
+                default:
+                    $delta = 'Un';
+                    break;
+            }
         }
         $txt = $delta . ' ' . $unitStr;
         if ($isNow) {
