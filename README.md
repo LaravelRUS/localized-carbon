@@ -1,5 +1,8 @@
 # Localized Carbon
 
+for **L4** use **1.4** branch   
+for **L5** use **dev-master**
+
 See also [localized documentation](docs)
 
 + [Introduction](#intro)
@@ -12,7 +15,7 @@ See also [localized documentation](docs)
 <a name="intro"></a>
 ## Introduction
 
-Localized Carbon is an extension of a popular Carbon package, designed specially for Laravel framework. By localization I mean its `diffForHumans` function, which returns a human-readable string of time interval.
+Localized Carbon is an extension of a popular Carbon package, designed specially for Laravel framework. By localization I mean its `diffForHumans` function, which returns a human-readable string of time interval. This package also supports genitive months by introducing the "%f" key in `formatLocalized` method.
 
 <a name="usage"></a>
 ## Usage
@@ -42,14 +45,20 @@ Also `LocalizedCarbon` adds an optional second argument, in which you may specif
 
 Current version of Localized Carbon ships with these localizations:
 
-+ English (en)
-+ Russian (ru)
-+ Ukrainian (uk)
-+ Dutch (nl)
-+ Spanish (es)
-+ Portuguese (pt)
-+ French (fr)
-+ Bulgarian (bg)
++ English (en) (full)
++ Russian (ru) (full)
++ Ukrainian (uk) (full)
++ Dutch (nl) (no genitive)
++ Spanish (es) (full)
++ Portuguese (pt) (no genitive)
++ French (fr) (no genitive)
++ Bulgarian (bg) (no genitive)
++ Slovakian (sk) (no genitive)
++ Turkish (tr) (no genitive)
++ Arabic (ar) (no genitive)
++ Japanese (ja) (full)
++ Bengali (bn) (full)
+
 
 But it is extendable, so you may write and use your own localization without altering the contents of the package. See [extending Localized Carbon](#extending).
 
@@ -73,11 +82,17 @@ After that you may want to add some Aliases (`aliases` section of the same confi
 
 Note that `DiffFormatter` will only be used for extending default localizations. See [extending Localized Carbon](#extending).
 
-If you want to use the power of `LocalizedCarbon` the same way as you did with original `Carbon` in your models, you may want to substitute Laravel's Eloquent model by changing the alias for `Eloquent` (assuming that your models extend this class):
+If you want to use the power of `LocalizedCarbon` the same way as you did with original `Carbon` in your models, you may want to use supplied trait for this in your models:
 
 ```
-'Eloquent'        => 'Laravelrus\LocalizedCarbon\Models\Eloquent',
+use \Laravelrus\LocalizedCarbon\Traits\LocalizedEloquentTrait;
 ```
+
+In this case `LocalizedCarbon` will be used for all dates in your Eloquent model instead of original `Carbon`.
+
+Note that this method is actual for PHP versions 5.4 and higher.
+
+If you are still using PHP 5.3.7 you can substitute Laravel's Eloquent class by `Laravelrus\LocalizedCarbon\Models\Eloquent` supplied with this package. To do this you can either inherit this class directly, or make an alias to it instead of originial Eloquent in `app\config\app.php`.
 
 <a name="extending"></a>
 ## Extending Localized Carbon
@@ -136,3 +151,5 @@ If you've written a formatter for the language which is not supported by current
 The formatter should lie in `src/Laravelrus/LocalizedCarbon/DiffFormatters` directory, following a simple naming convention: the class name should start with the desired language in lower-case, but the first letter in upper-case. The rest part of the name should be "DiffFormatter". The file name should correspond to the class name.
 
 For example, the formatter for `fr` language would lie in `src/Laravelrus/LocalizedCarbon/DiffFormatters/FrDiffFormatter.php`, and the class name would be `FrDiffFormatter`.
+
+Also I need the help of the community to complete the list of genitives for all supported languages. If you know a language and it uses genitives in dates, feel free to contribute. See an example of Russian or Ukranian `lang\XX\months.php` files.

@@ -11,7 +11,7 @@ class LocalizedCarbon extends Carbon {
         return \App::getLocale();
     }
 
-    public function diffForHumans(Carbon $other = null, $formatter = null) {
+    public function diffForHumans(Carbon $other = null, $formatter = null, $short = false) {
         if ($formatter === null) {
             $language = self::determineLanguage();
             $formatter = DiffFactoryFacade::get($language);
@@ -30,13 +30,14 @@ class LocalizedCarbon extends Carbon {
 
         $delta = $other->diffInSeconds($this);
 
-        // 4 weeks per month, 365 days per year... good enough!!
+        // 4.35 weeks per year. 365 days in a year, 12 months, 7 days in a week:
+        // 365/12/7 = 4.345238095238095 4.35 is good enough for big time calculations!
         $divs = array(
             'second' => self::SECONDS_PER_MINUTE,
             'minute' => self::MINUTES_PER_HOUR,
             'hour'   => self::HOURS_PER_DAY,
             'day'    => self::DAYS_PER_WEEK,
-            'week'   => 4,
+            'week'   => 4.35,
             'month'  => self::MONTHS_PER_YEAR
         );
 
@@ -62,6 +63,20 @@ class LocalizedCarbon extends Carbon {
         } elseif ($formatter instanceof \Closure) {
             $result = $formatter($isNow, $isFuture, $delta, $unit);
         }
+
+        return $result;
+    }
+
+    public function formatLocalized($format = self::COOKIE) {
+        if (strpos($format, '%f') !== false) {
+            $langKey = strtolower(parent::format("F"));
+            $replace = \Lang::get("localized-carbon::months." . $langKey);
+            $result = str_replace('%f', $replace, $format);
+        } else {
+            $result = $format;
+        }
+
+        $result = parent::formatLocalized($result);
 
         return $result;
     }

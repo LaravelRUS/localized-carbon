@@ -7,7 +7,7 @@ class PtDiffFormatter implements DiffFormatterInterface {
         
         $unitStr = \Lang::choice("localized-carbon::units." . $unit, $delta, array(), 'pt');
         
-        $txt = $delta . ' ' . $unit;
+        $txt = $delta . ' ' . $unitStr;
 
         if ($isNow) {
             $txt .= ($isFuture) ? ' a partir de agora' : ' atrás';
