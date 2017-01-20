@@ -76,8 +76,8 @@ Next, add package's Service Provider to `app/config/app.php` in `providers` sect
 After that you may want to add some Aliases (`aliases` section of the same config):
 
 ```
-'LocalizedCarbon'   => 'Laravelrus\LocalizedCarbon\LocalizedCarbon',
-'DiffFormatter'     => 'Laravelrus\LocalizedCarbon\DiffFactoryFacade',
+'LocalizedCarbon' => Laravelrus\LocalizedCarbon\LocalizedCarbon::class,
+'DiffFormatter'   => Laravelrus\LocalizedCarbon\DiffFactoryFacade::class,
 ```
 
 Note that `DiffFormatter` will only be used for extending default localizations. See [extending Localized Carbon](#extending).
