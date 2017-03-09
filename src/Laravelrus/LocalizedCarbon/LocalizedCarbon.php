@@ -11,7 +11,7 @@ class LocalizedCarbon extends Carbon {
         return \App::getLocale();
     }
 
-    public function diffForHumans(Carbon $other = null, $formatter = null) {
+    public function diffForHumans(Carbon $other = null, $formatter = null, $short = false) {
         if ($formatter === null) {
             $language = self::determineLanguage();
             $formatter = DiffFactoryFacade::get($language);
