@@ -1,11 +1,11 @@
 <?php namespace Laravelrus\LocalizedCarbon\DiffFormatters;
 
 
-class PrDiffFormatter implements DiffFormatterInterface {
+class FaDiffFormatter implements DiffFormatterInterface {
 
     public function format($isNow, $isFuture, $delta, $unit) {
 
-        $unitStr = \Lang::choice("localized-carbon::units." . $unit, $delta, array(), 'pr');
+        $unitStr = \Lang::choice("localized-carbon::units." . $unit, $delta, array(), 'fa');
 
         $txt = $delta . ' ' . $unitStr;
 
