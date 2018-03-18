@@ -1,3 +1,6 @@
+# Maintainers needed
+Sorry, I have not much time supporting this repo. Also I rarely work with Laravel now, so new maintainers are needed.
+
 # Localized Carbon
 
 for **L4** use **1.4** branch   
