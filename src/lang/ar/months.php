@@ -5,7 +5,7 @@ return array(
     "february" => "فبراير",
     "march" => "مارس",
     "april" => "أبريل",
-    "may" => "ماي",
+    "may" => "مايو",
     "june" => "يونيو",
     "july" => "يوليو",
     "august" => "أغسطس",
