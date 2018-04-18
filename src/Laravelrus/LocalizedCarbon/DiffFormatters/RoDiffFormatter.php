@@ -14,13 +14,13 @@ class RoDiffFormatter implements DiffFormatterInterface {
             $suffix = '';
 
             switch ($unit) {
-                case 'second': $deltaInWords = 'einer'; break;
-                case 'minute': $deltaInWords = 'einer'; break;
-                case 'hour': $deltaInWords = 'einer'; break;
-                case 'day': $deltaInWords = 'o'; $suffix = 'n'; break;
+                case 'second': $deltaInWords = 'o'; break;
+                case 'minute': $deltaInWords = 'un'; break;
+                case 'hour': $deltaInWords = 'o'; break;
+                case 'day': $deltaInWords = 'o'; break;
                 case 'week': $deltaInWords = 'o'; break;
-                case 'month': $deltaInWords = 'o'; $suffix = 'n'; break;
-                case 'year': $deltaInWords = 'un'; $suffix = 'n'; break;
+                case 'month': $deltaInWords = 'o';  break;
+                case 'year': $deltaInWords = 'un'; $suffix = 'i'; break;
             }
 
             if($delta == 1) {
