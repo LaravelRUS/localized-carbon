@@ -4,14 +4,15 @@ Sorry, I have not much time supporting this repo. Also I rarely work with Larave
 # Localized Carbon
 
 for **L4** use **1.4** branch   
-for **L5** use **dev-master**
+for **L5.4** use **2.2**
+for **>=L5.5** use **2.3**
 
 See also [localized documentation](docs)
 
 + [Introduction](#intro)
++ [Installation](#installation)
 + [Usage](#usage)
 + [Supported languages](#languages)
-+ [Installation](#installation)
 + [Extending](#extending)
 + [Contributing](#contributing)
 
@@ -19,6 +20,40 @@ See also [localized documentation](docs)
 ## Introduction
 
 Localized Carbon is an extension of a popular Carbon package, designed specially for Laravel framework. By localization I mean its `diffForHumans` function, which returns a human-readable string of time interval. This package also supports genitive months by introducing the "%f" key in `formatLocalized` method.
+
+
+<a name="installation"></a>
+## Installation
+
+Add the following requirement to your `composer.json`: `"laravelrus/localized-carbon": "1.*"` and then run `composer update`.
+
+Next, add package's Service Provider to `app/config/app.php` in `providers` section:
+
+```
+'Laravelrus\LocalizedCarbon\LocalizedCarbonServiceProvider',
+```
+
+After that you may want to add some Aliases (`aliases` section of the same config):
+
+```
+'LocalizedCarbon' => Laravelrus\LocalizedCarbon\LocalizedCarbon::class,
+'DiffFormatter'   => Laravelrus\LocalizedCarbon\DiffFactoryFacade::class,
+```
+
+Note that `DiffFormatter` will only be used for extending default localizations. See [extending Localized Carbon](#extending).
+
+If you want to use the power of `LocalizedCarbon` the same way as you did with original `Carbon` in your models, you may want to use supplied trait for this in your models:
+
+```
+use \Laravelrus\LocalizedCarbon\Traits\LocalizedEloquentTrait;
+```
+
+In this case `LocalizedCarbon` will be used for all dates in your Eloquent model instead of original `Carbon`.
+
+Note that this method is actual for PHP versions 5.4 and higher.
+
+If you are still using PHP 5.3.7 you can substitute Laravel's Eloquent class by `Laravelrus\LocalizedCarbon\Models\Eloquent` supplied with this package. To do this you can either inherit this class directly, or make an alias to it instead of originial Eloquent in `app\config\app.php`.
+
 
 <a name="usage"></a>
 ## Usage
@@ -66,37 +101,7 @@ Current version of Localized Carbon ships with these localizations:
 
 But it is extendable, so you may write and use your own localization without altering the contents of the package. See [extending Localized Carbon](#extending).
 
-<a name="installation"></a>
-## Installation
 
-Add the following requirement to your `composer.json`: `"laravelrus/localized-carbon": "1.*"` and then run `composer update`.
-
-Next, add package's Service Provider to `app/config/app.php` in `providers` section:
-
-```
-'Laravelrus\LocalizedCarbon\LocalizedCarbonServiceProvider',
-```
-
-After that you may want to add some Aliases (`aliases` section of the same config):
-
-```
-'LocalizedCarbon' => Laravelrus\LocalizedCarbon\LocalizedCarbon::class,
-'DiffFormatter'   => Laravelrus\LocalizedCarbon\DiffFactoryFacade::class,
-```
-
-Note that `DiffFormatter` will only be used for extending default localizations. See [extending Localized Carbon](#extending).
-
-If you want to use the power of `LocalizedCarbon` the same way as you did with original `Carbon` in your models, you may want to use supplied trait for this in your models:
-
-```
-use \Laravelrus\LocalizedCarbon\Traits\LocalizedEloquentTrait;
-```
-
-In this case `LocalizedCarbon` will be used for all dates in your Eloquent model instead of original `Carbon`.
-
-Note that this method is actual for PHP versions 5.4 and higher.
-
-If you are still using PHP 5.3.7 you can substitute Laravel's Eloquent class by `Laravelrus\LocalizedCarbon\Models\Eloquent` supplied with this package. To do this you can either inherit this class directly, or make an alias to it instead of originial Eloquent in `app\config\app.php`.
 
 <a name="extending"></a>
 ## Extending Localized Carbon
