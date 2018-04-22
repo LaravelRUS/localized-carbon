@@ -19,5 +19,16 @@
             "Laravelrus\\LocalizedCarbon\\": "src/"
         }
     },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Laravelrus\\LocalizedCarbon\\LocalizedCarbonServiceProvider"
+            ],
+            "aliases": {
+                "LocalizedCarbon": "Laravelrus\\LocalizedCarbon\\LocalizedCarbon",
+                "DiffFormatter": "Laravelrus\\LocalizedCarbon\\DiffFactoryFacade"
+            }
+        }
+    },
     "minimum-stability": "stable"
 }
