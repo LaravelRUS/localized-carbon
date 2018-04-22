@@ -1,3 +1,6 @@
+# Maintainers needed
+Sorry, I have not much time supporting this repo. Also I rarely work with Laravel now, so new maintainers are needed.
+
 # Localized Carbon
 
 for **L4** use **1.4** branch   
@@ -58,6 +61,7 @@ Current version of Localized Carbon ships with these localizations:
 + Arabic (ar) (no genitive)
 + Japanese (ja) (full)
 + Bengali (bn) (full)
++ Persian (fa) (full)
 
 
 But it is extendable, so you may write and use your own localization without altering the contents of the package. See [extending Localized Carbon](#extending).
@@ -76,8 +80,8 @@ Next, add package's Service Provider to `app/config/app.php` in `providers` sect
 After that you may want to add some Aliases (`aliases` section of the same config):
 
 ```
-'LocalizedCarbon'   => 'Laravelrus\LocalizedCarbon\LocalizedCarbon',
-'DiffFormatter'     => 'Laravelrus\LocalizedCarbon\DiffFactoryFacade',
+'LocalizedCarbon' => Laravelrus\LocalizedCarbon\LocalizedCarbon::class,
+'DiffFormatter'   => Laravelrus\LocalizedCarbon\DiffFactoryFacade::class,
 ```
 
 Note that `DiffFormatter` will only be used for extending default localizations. See [extending Localized Carbon](#extending).
