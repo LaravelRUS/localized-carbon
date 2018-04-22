@@ -4,7 +4,8 @@ Sorry, I have not much time supporting this repo. Also I rarely work with Larave
 # Localized Carbon
 
 for **L4** use **1.4** branch   
-for **L5** use **dev-master**
+for **L5.4** use **2.2**
+for **>=L5.5** use **2.3**
 
 See also [localized documentation](docs)
 
