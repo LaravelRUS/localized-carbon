@@ -89,6 +89,7 @@ Current version of Localized Carbon ships with these localizations:
 + Dutch (nl) (no genitive)
 + Spanish (es) (full)
 + Portuguese (pt) (no genitive)
++ Brazilian Portuguese (br) (full)
 + French (fr) (no genitive)
 + Bulgarian (bg) (no genitive)
 + Slovakian (sk) (no genitive)
