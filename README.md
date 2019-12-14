@@ -96,6 +96,7 @@ Current version of Localized Carbon ships with these localizations:
 + Arabic (ar) (no genitive)
 + Japanese (ja) (full)
 + Bengali (bn) (full)
++ Pashto (Pa) (full)
 + Persian (fa) (full)
 
 
