@@ -16,7 +16,6 @@ class LocalizedCarbon extends Carbon {
         $language = self::determineLanguage();
         $formatter = DiffFactoryFacade::get($language);
 
-
         // Original logic from Carbon
         $isNow = $other === null;
 
